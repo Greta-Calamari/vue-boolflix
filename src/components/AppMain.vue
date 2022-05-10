@@ -22,6 +22,9 @@ export default {
     components:{
         AppCard,
     },
+    data(){
+
+    },
 
 }
 </script>
