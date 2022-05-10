@@ -1,34 +1,31 @@
 <template>
   <div id="app">
-    <header>
-    <AppHeader/>
-    </header>
-    <main>
-      <AppMain/>
-    </main>
-
+    <app-header/>
+    <app-grid/>
   </div>
+    
+
 </template>
 
 <script>
+import AppGrid from './components/AppGrid.vue'
 import AppHeader from './components/AppHeader.vue'
-import AppMain from './components/AppMain.vue'
-
-
-
 
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppMain,
-    
+    AppGrid,
   }
 }
 </script>
 
 <style lang="scss">
-@import './style/general.scss';
+@import "./style/generals.scss";
+
+#app{
+  background-color: $bg-main;
+}
 
 </style>

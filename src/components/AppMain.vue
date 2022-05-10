@@ -41,7 +41,7 @@ export default {
         }
 
 
-    },mounted(){
+    },created(){
         axios.get(this.api + store.state.search).then((res)=>{
             this.searchedMovies = res.data.results;
             console.log(this.authors)
