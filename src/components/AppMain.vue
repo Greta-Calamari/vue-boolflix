@@ -2,8 +2,8 @@
 <div>
 
     <div class="row">
-        <div class="col-6 col-md-4 col-lg-3" v-for="movie in tList" :key="movie.id">
-            <AppCard :item="movie"/>
+        <div class="col-6 col-md-4 col-lg-3" v-for="(movies,index) in tList" :key="index">
+            <AppCard :item="movies"/>
 
         </div>
         
@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import AppCard from './AppCard.vue'
 import axios from 'axios';
+import AppCard from './AppCard.vue'
 
 export default {
     name:'AppCard',
@@ -28,8 +28,8 @@ export default {
     
     data(){
         return {
-             apiUrl:'https://api.themoviedb.org/3/serach/',
-             apiKey:'7bb93464ea396b5c4394f00e6170ccea',
+             apiUrl:'https://api.themoviedb.org/3/search/',
+             apiKey:'api_key=7bb93464ea396b5c4394f00e6170ccea',
              tList:[],
              movies:[],
 
@@ -37,15 +37,16 @@ export default {
 
 
     },
-    created(){
-        axios.get(this.apiUrl +'movie').then((res)=>{
-            console.log(this.tList)
-            this.tList = res.data
+    mounted(){
+        axios.get(this.apiUrl +'movie?'+ this.apiKey +'&query=star+wars+empire').then((res)=>{
+            console.log(res.data.response)
+            this.tList = res.data.response
             this.tList.forEach((el)=>{
                 if(!this.movies.includes(el.movies)){
                     this.movies.push(el.movies)
                 }
             });
+            
 
         }).catch((error)=>{
             console.log(error)
@@ -57,5 +58,6 @@ export default {
 </script>
 
 <style lang="scss">
+
 
 </style>
