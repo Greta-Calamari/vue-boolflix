@@ -1,13 +1,11 @@
 <template>
 <div>
 
-    <div class="row">
-        <div class="col-6 col-md-4 col-lg-3" v-for="(movies,index) in tList" :key="index">
-            <AppCard :item="movies"/>
-
+   <div class="row w-75 justify-content-center py-5 m-auto">
+        <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
+        v-for="(album, index) in searchedMovies" :key="index">
+        <app-card :item="album"/>
         </div>
-        
-        
     </div>
 
 
@@ -16,6 +14,7 @@
 </template>
 
 <script>
+import store from '../store.js';
 import axios from 'axios';
 import AppCard from './AppCard.vue'
 
@@ -28,32 +27,50 @@ export default {
     
     data(){
         return {
-             apiUrl:'https://api.themoviedb.org/3/search/',
-             apiKey:'api_key=7bb93464ea396b5c4394f00e6170ccea',
-             tList:[],
-             movies:[],
+             
+            
+            lastPopular:[],
+            api:'https://api.themoviedb.org/3/search/movie?api_key=6853d87823c5e52e6b967b2482fca241&language=it-IT&query=',
+            apiKey:'api_key=7bb93464ea396b5c4394f00e6170ccea',
+            apiSearch:'&language=it-IT&query=',
+            // apiLastPopular:'https://api.themoviedb.org/3/movie/popular?api_key=6853d87823c5e52e6b967b2482fca241&language=it-IT&page=1',
+            searchedMovies:[],
+            authors:[],
+            searchText:"",
 
         }
 
 
-    },
-    mounted(){
-        axios.get(this.apiUrl +'movie?'+ this.apiKey +'&query=star+wars+empire').then((res)=>{
-            console.log(res.data.response)
-            this.tList = res.data.response
-            this.tList.forEach((el)=>{
-                if(!this.movies.includes(el.movies)){
-                    this.movies.push(el.movies)
-                }
-            });
-            
+    },methods:{
+        mySearch(text){
+              
+          
+              axios.get(this.api + store.state.search).then((res)=>{
+              this.searchedMovies = res.data.results;
+              console.log(this.albumList)
+              console.log(this.authors)
+          }).catch((error) => {
+              console.log(error)
+          })
+                 this.searchText = text; 
+                 
+          },
+          
+          myfind(){
+              console.log(store.state.search)
+              return store.state.searchText
+          }
 
-        }).catch((error)=>{
-            console.log(error)
-            
-        })
+    }
+        
+    
+    
 
-  }
+  
+        
+
+    
+
 }
 </script>
 
