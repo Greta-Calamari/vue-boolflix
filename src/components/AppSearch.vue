@@ -6,7 +6,12 @@
 </template>
 <script>
 export default {
-    name:'AppSearch'
+    name:'AppSearch',
+    data(){
+        return{
+            inputText:'',
+        }
+    },
 }
 </script>
 <style lang="scss">

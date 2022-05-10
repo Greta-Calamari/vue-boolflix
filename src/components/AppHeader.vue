@@ -11,7 +11,9 @@
 <script>
 import AppSearch from './AppSearch.vue'
 export default {
-  components: { AppSearch },
+  components: { 
+      AppSearch,
+  },
     name:'AppHeader'
 }
 </script>

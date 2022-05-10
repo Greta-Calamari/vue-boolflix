@@ -2,10 +2,10 @@
 <div>
 
     <div class="card">
-        <div>titolo</div>
-        <div>titolo originale</div>
-        <div>lingua</div>
-        <div>voto</div>
+        <div>{{item.title}}</div>
+        <div>{{item.name}}</div>
+        <div>{{item.language}}</div>
+        <div>{{item.vote}}</div>
         
     </div>
 
@@ -17,12 +17,19 @@
 <script>
 export default {
     name:'AppCard',
-    data(){
-
+    props:{
+        item:Object
     }
+    
+
+    
 }
 </script>
 
 <style lang="scss">
+.card{
+    height: 300px;
+    color: black;
+}
 
 </style>
