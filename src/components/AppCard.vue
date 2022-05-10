@@ -36,19 +36,14 @@ export default {
 .col{
     box-shadow: 5px 10px 20px #0000006b;
 }
-div{
-    overflow: hidden;
-    
-    
-   
-}
+
 h4{
     color: antiquewhite;
     font-size: 20px;
     text-overflow: ellipsis;
 }
 p{
-    color: rgb(255, 255, 255);
+    color:black;
     font-size: 20px;
 }
 
