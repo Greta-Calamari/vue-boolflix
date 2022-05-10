@@ -16,7 +16,10 @@
 
 <script>
 export default {
-    name:'AppCard'
+    name:'AppCard',
+    data(){
+
+    }
 }
 </script>
 

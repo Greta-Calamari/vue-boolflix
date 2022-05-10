@@ -23,7 +23,16 @@ export default {
         AppCard,
     },
     data(){
+        return {
+             apiUrl:'https://api.themoviedb.org/3/serach/',
+             apiKey:'7bb93464ea396b5c4394f00e6170ccea',
+             TList:[],
 
+        }
+
+
+    },created(){
+        0
     },
 
 }
