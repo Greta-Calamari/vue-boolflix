@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <header>
+    <header class="header">
     <h1 class="display-6">Boolflix</h1>
     
     <search-bar @performSearch="search"/>
     </header>
   
 
-    <main>
+    <main class="main">
       
       
       <grid-list :items="movies" title="Movies" :loader="loading"/>
@@ -89,10 +89,18 @@ export default {
 
 <style lang="scss">
 @import './styles/general.scss';
+.header{
+  background-color: $bg-main;
+}
 
-
+.main{
+  background-color: $bg-navbar;
+  height: 1000vh;
+}
 h1{
   color: $tt-color;
 }
+
+
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-<section>
+<section class="main-s">
     <h2 class="title">{{title}}</h2>
     <div class="row w-75 justify-content-center py-5 m-auto">
          <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0" v-for="(item) in items" :key="item.id">
@@ -87,6 +87,8 @@ export default {
 //     box-shadow: 5px 10px 20px #0000006b;
     
 // }
+
+
 
 .flag-img{
     width: 50px;
