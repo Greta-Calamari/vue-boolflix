@@ -6,12 +6,18 @@
               <div class="col text-center d-flex flex-column align-items-center justify-content-between">
                 <div>
                    <img class="w-100 p-1" :src="'https://image.tmdb.org/t/p/original/'+ item.poster_path" alt="">
-                <h4 class="text-center fw-bold p-2 text-uppercase">{{item.title ? item.title : item.name}}</h4>   
+                   <h4 class="text-center fw-bold p-2 text-uppercase">{{item.title ? item.title : item.name}}</h4>   
                 </div>
                 <div>
                    <p class="px-2 m-0">{{item.original_title ? item.original_title :item.original_name}}</p>
-                   <p class="px-2">{{item.release_date}}</p>    
+                   <p class="px-2">{{item.release_date}}</p>
+                   <!-- <p class="px-2">{{item.original_language}}</p>-->
+                   <div>
+                   <img class="flag-img" :src="require('../assets/images/' + item.original_language + '.jpg')" alt="">
+
+                   </div>
                    <p class="px-2">{{item.vote_average}}</p>  
+
                 </div>
               </div>
         
@@ -32,6 +38,7 @@
 <!--   
         </li>
       </ul> -->
+      
 
 
 </section>
@@ -72,6 +79,10 @@ export default {
 //     box-shadow: 5px 10px 20px #0000006b;
     
 // }
+
+.flag-img{
+    width: 20px;
+}
 div{
     overflow: hidden;
     color: $bg-main;
