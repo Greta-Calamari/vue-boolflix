@@ -11,11 +11,19 @@
                 <div>
                    <p class="px-2 m-0">{{item.original_title ? item.original_title :item.original_name}}</p>
                    <p class="px-2">{{item.release_date}}</p>
-                   <!-- <p class="px-2">{{item.original_language}}</p>-->
                    <div>
+                   <div v-if="!item.original_language === item.original_language">
                    <img class="flag-img" :src="require('../assets/images/' + item.original_language + '.jpg')" alt="">
-
                    </div>
+                   <div v-else>
+                       <img class="flag-img" :src="require('../assets/images/' + 'world.jpg')" alt="">
+                   </div>
+
+
+                   <!-- <p class="px-2">{{item.original_language}}</p>-->
+                   </div>
+            
+
                    <p class="px-2">{{item.vote_average}}</p>  
 
                 </div>
@@ -81,7 +89,7 @@ export default {
 // }
 
 .flag-img{
-    width: 20px;
+    width: 50px;
 }
 div{
     overflow: hidden;
