@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <header class="header">
+    <header class="header d-flex justify-content-between">
     <h1 class="display-6">Boolflix</h1>
-    
     <search-bar @performSearch="search"/>
     </header>
+    
   
 
     <main class="main">

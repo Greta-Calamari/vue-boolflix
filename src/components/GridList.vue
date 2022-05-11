@@ -12,8 +12,8 @@
                    <p class="px-2 m-0">{{item.original_title ? item.original_title :item.original_name}}</p>
                    <p class="px-2">{{item.release_date}}</p>
                    <div>
-                   <div v-if="!item.original_language === item.original_language">
-                   <img class="flag-img" :src="require('../assets/images/' + item.original_language + '.jpg')" alt="">
+                   <div v-if="item.original_language === 'en' || item.original_language === 'it' ">
+                        <img class="flag-img" :src="require('../assets/images/' + item.original_language + '.jpg')" alt="">
                    </div>
                    <div v-else>
                        <img class="flag-img" :src="require('../assets/images/' + 'world.jpg')" alt="">
@@ -24,29 +24,20 @@
                    </div>
             
 
-                   <p class="px-2">{{item.vote_average}}</p>  
+                   <p class="px-2 star">
+                   <i v-for="index in changeNumber(item.vote_average)"
+                                :key="index"
+                                class="fa-solid fa-star">
+                   </i>
+                    </p>  
+                
+                   
 
                 </div>
               </div>
         
          </div>
      </div>
-
-    <!-- <ul>
-        <li v-for="(item) in items" :key="item.id"> -->
-           
-        <!-- id :{{item.id}} -->
-        
-        <!-- titolo originale:{{item.original_title ? item.original_title :item.original_name}}
-        titolo:{{item.title ? item.title : item.name}}
-        lingua:{{item.original_language}} -->
-        <!-- <div v-if="!item.original_language === "></div> -->
-        <!-- <img :src="require('./assets/images/' + item.original_language + '.jpg')" alt=""> -->
-        <!-- voto:{{item.vote_average}} -->
-<!--   
-        </li>
-      </ul> -->
-      
 
 
 </section>
@@ -55,6 +46,7 @@
 
 <script>
 // import state from '../store'
+import "../styles/general.scss";
 
 export default {
    name: 'GridList',
@@ -70,6 +62,9 @@ export default {
    },
    methods:{
        
+        changeNumber(number){
+            return Math.round(number/2)
+        },
 
    },
    computed:{
@@ -80,6 +75,11 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/general.scss";
+
+.star{
+    color: yellow;
+}
+
 .title{
     color: $tt-color;
 }
@@ -88,7 +88,10 @@ export default {
     
 // }
 
-
+.main-s{
+    
+  background-color: $bg-navbar;
+}
 
 .flag-img{
     width: 50px;
@@ -96,7 +99,7 @@ export default {
 div{
     overflow: hidden;
     color: $bg-main;
-    background-color: $bg-navbar;
+    
    
 }
 h4{
