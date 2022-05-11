@@ -27,6 +27,7 @@
                    <p class="px-2 star">
                    <i v-for="index in changeNumber(item.vote_average)"
                                 :key="index"
+                                font-awesome-icon
                                 class="fa-solid fa-star">
                    </i>
                     </p>  
