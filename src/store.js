@@ -1,16 +1,30 @@
-import Vue from "vue";
+// import Vue from 'vue';
 
-const store = {
-    state: Vue.observable({
-        search: '',
-        species: []
-    }),
-    setSearch(text) {
-        this.state.search = text;
-        console.log(text)
-    },
-    setSpecies(species) {
-        this.state.species = species;
-    }
-}
-export default store;
+
+// const _state = Vue.observable({
+//     search:'',
+//     species:[],
+// })
+
+
+// export default _state;
+
+
+
+// CONTROLLO MAGGIORE
+// const state = ()=>({..._state});
+// const actions ={
+//     setSearch(val){
+//         _state.search = val;
+//     },
+//     setSpecies(val){
+//         _state.species = val;
+
+//     },
+// };
+
+// export default {state, actions};
+
+
+// import {state,actions} from '../store'
+// per fare state.search devo fare = actions.setSearch('aa')
