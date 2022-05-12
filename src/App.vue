@@ -40,8 +40,10 @@ export default {
     return{
       apiKey:'7bb93464ea396b5c4394f00e6170ccea',
       apiPath:'https://api.themoviedb.org/3/search/',
+      apiPathActor:'https://api.themoviedb.org/3/person/',
       movies:[],
       series:[],
+      actors:[],
       loading:false,
       loadingSeries:false,
       
@@ -74,6 +76,19 @@ export default {
         console.log(error)
       })
 
+    },getActor(queryParams){
+      // https://api.themoviedb.org/3/person/changes?api_key=7bb93464ea396b5c4394f00e6170ccea&page=1
+      axios.get(this.apiPathActor + 'changes',queryParams).then((res)=>{
+        // console.log(res.data.results)
+        this.actors = res.data.results;
+        
+
+
+      }).catch((error)=>{
+        console.log(error)
+      })
+      
+
     },
     search(text){
       const queryParams = {
@@ -87,6 +102,8 @@ export default {
       this.loadingSeries = true;
       this.getMovies(queryParams)
       this.getSeries(queryParams)
+      this.getActor(queryParams)
+
 
     },
   }
