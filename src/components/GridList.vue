@@ -1,12 +1,14 @@
 <template>
+
 <section class="main-s">
+    
     <h2 class="title">{{title}}</h2>
     <div class="row w-75 justify-content-center py-5 m-auto" >
          <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0" v-for="(item) in items" :key="item.id" >
-            <div class=" rela col text-center d-flex flex-column align-items-center justify-content-between" @mouseover="showItem">
+            <div class=" rela col text-center d-flex flex-column align-items-center justify-content-between" @mouseover="showItem" >
                 
-                <img class="w-100 p-1" :src="'https://image.tmdb.org/t/p/w342/'+ item.poster_path" alt="">
-                <div class="showCard" :class="show ? 'active'  : ''">
+                <img class="w-100 p-1" :src="'https://image.tmdb.org/t/p/w342/'+ item.poster_path" alt="" >
+                <div class="showCard" :class="show ? 'active'  : 'showCard'">
                    <h4 class="text-center fw-bold p-2 text-uppercase">{{item.title ? item.title : item.name}}</h4>   
                    <p class="px-2 m-0">{{item.original_title ? item.original_title :item.original_name}}</p>
                    <p class="px-2">{{item.release_date}}</p>
@@ -25,7 +27,7 @@
         
     </div>
 </div>
-<!-- :class="show ? 'active' : '' " -->
+
                    
                 
                    
@@ -50,15 +52,17 @@
 // import state from '../store'
 import "../styles/general.scss";
 
+
+
 export default {
    name: 'GridList',
+   
    props:['items','loader','title'],
-   components:{
-
-   },
+   
    data(){
        return{
            show: false,
+           
            
 
        }
@@ -132,6 +136,7 @@ p{
     display: none;
     padding: 20px 10px;
     overflow-y: auto;
+    background-color: blue;
 }
     
     

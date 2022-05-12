@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <header class="header d-flex justify-content-between">
     <h1 class="display-6">Boolflix</h1>
     <search-bar @performSearch="search"/>
@@ -9,7 +10,9 @@
 
     <main class="main">
       
+      <loader-component v-if="loading"/>
       
+
       <grid-list :items="movies" title="Movies" :loader="loading"/>
       <grid-list :items="series" title="Series" :loader="loadingSeries"/>
 
@@ -23,6 +26,8 @@
 import axios from 'axios'
 import GridList from './components/GridList.vue'
 import SearchBar from './components/SearchBar.vue'
+import LoaderComponent from './components/LoaderComponent.vue'
+
 
 
 export default {
@@ -30,6 +35,7 @@ export default {
   components: {
     SearchBar,
     GridList,
+    LoaderComponent,
   },data(){
     return{
       apiKey:'7bb93464ea396b5c4394f00e6170ccea',
@@ -46,7 +52,7 @@ export default {
     
   methods:{
     getMovies(queryParams){
-      
+      this.loading = true;
       axios.get(this.apiPath + 'movie',queryParams).then((res)=>{
         // console.log(res.data.results)
         this.movies = res.data.results;
@@ -57,6 +63,7 @@ export default {
         console.log(error)
       })
     },getSeries(queryParams){
+      this.loading = true;
       axios.get(this.apiPath + 'tv',queryParams).then((res)=>{
         // console.log(res.data.results)
         this.series = res.data.results;
