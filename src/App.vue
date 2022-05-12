@@ -11,7 +11,7 @@
     <main class="main">
       
       <loader-component v-if="loading"/>
-      
+      <loader-component v-if="loadingSeries"/>
 
       <grid-list :items="movies" title="Movies" :loader="loading"/>
       <grid-list :items="series" title="Series" :loader="loadingSeries"/>

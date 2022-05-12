@@ -5,10 +5,10 @@
     <h2 class="title">{{title}}</h2>
     <div class="row w-75 justify-content-center py-5 m-auto" >
          <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0" v-for="(item) in items" :key="item.id" >
-            <div class=" rela col text-center d-flex flex-column align-items-center justify-content-between" @mouseover="showItem" >
+            <div class=" rela col text-center d-flex flex-column align-items-center justify-content-between">
                 
                 <img class="w-100 p-1" :src="'https://image.tmdb.org/t/p/w342/'+ item.poster_path" alt="" >
-                <div class="showCard" :class="show ? 'active'  : 'showCard'">
+                <div class="showCard">
                    <h4 class="text-center fw-bold p-2 text-uppercase">{{item.title ? item.title : item.name}}</h4>   
                    <p class="px-2 m-0">{{item.original_title ? item.original_title :item.original_name}}</p>
                    <p class="px-2">{{item.release_date}}</p>
@@ -50,7 +50,7 @@
 
 <script>
 // import state from '../store'
-import "../styles/general.scss";
+// import "../styles/general.scss";
 
 
 
@@ -73,7 +73,9 @@ export default {
             return Math.round(number/2)
         },
         showItem(){
-         return this.show = true 
+        this.show = true
+        console.log(this.show)
+
     },
 
    },
@@ -84,7 +86,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "../styles/general.scss";
+@import "../styles/vars.scss";
 
 .rela{
     position: relative;
@@ -123,20 +125,21 @@ p{
     font-size: 20px;
 }
 
-.active{
-  display: block;
+.showCard:hover{
+  opacity: 1;
+  
 }
 
 .showCard{
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 30px;
+    left: 18px;
     width: 100%;
     height: 300px;
-    display: none;
+    opacity: 0;
     padding: 20px 10px;
     overflow-y: auto;
-    background-color: blue;
+   
 }
     
     
